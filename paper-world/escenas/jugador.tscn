@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl1rjt28wo7uf"]
+
+[ext_resource type="Script" uid="uid://cth0xkrpylkli" path="res://scripts/personaje movimiento.gd" id="1_n5itw"]
+[ext_resource type="Texture2D" uid="uid://dbb0yl8apmo8l" path="res://recursos usados/caminando sprites.png" id="2_njcx7"]
+[ext_resource type="Texture2D" uid="uid://ckqa62cxylvtv" path="res://recursos usados/quieto.png" id="3_njcx7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xutah"]
+atlas = ExtResource("2_njcx7")
+region = Rect2(0, 0, 272, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovq70"]
+atlas = ExtResource("2_njcx7")
+region = Rect2(272, 0, 272, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wmjoq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xutah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovq70")
+}],
+"loop": true,
+"name": &"caminar",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_njcx7")
+}],
+"loop": true,
+"name": &"quieto",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5itw"]
+size = Vector2(20, 42)
+
+[node name="jugador" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_n5itw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(5.9604645e-08, 4.7683716e-07)
+scale = Vector2(0.17307693, 0.17307694)
+sprite_frames = SubResource("SpriteFrames_wmjoq")
+animation = &"quieto"
+autoplay = "quieto"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_n5itw")
+one_way_collision = true
+one_way_collision_margin = 0.0
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position_smoothing_enabled = true

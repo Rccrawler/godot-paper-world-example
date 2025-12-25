@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qnthke2g3lwb"]
+
+[ext_resource type="Texture2D" uid="uid://dsi6kmaf304w2" path="res://recursos usados/roca1.png" id="1_bob0o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khp0c"]
+radius = 18.0
+height = 40.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(0, -1)
+scale = Vector2(0.11884588, 0.12197341)
+texture = ExtResource("1_bob0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CapsuleShape2D_khp0c")
